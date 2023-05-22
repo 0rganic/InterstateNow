@@ -1,41 +1,40 @@
 package com.example.interstatenow
-
 import androidx.appcompat.app.AppCompatActivity
-import android.content.Intent
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var bottomNavigationView: BottomNavigationView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val bottomNavigationView: BottomNavigationView = findViewById(R.id.bottomNavigation)
+        bottomNavigationView = findViewById(R.id.bottomNavigation)
         bottomNavigationView.setSelectedItemId(R.id.bottom_home)
 
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainer, HomeFragment())
+            .commit()
+
         bottomNavigationView.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.bottom_home -> true
-                R.id.bottom_location -> {
-                    startActivity(Intent(applicationContext, Location::class.java))
-                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
-                    finish()
-                    true
-                }
-                R.id.bottom_graph -> {
-                    startActivity(Intent(applicationContext, DataGraph::class.java))
-                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
-                    finish()
-                    true
-                }
-                R.id.bottom_profile -> {
-                    startActivity(Intent(applicationContext, Profile ::class.java))
-                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
-                    finish()
-                    true
-                }
-                else -> false
+            val fragment: Fragment? = when (item.itemId) {
+                R.id.bottom_home -> HomeFragment()
+                R.id.bottom_location -> LocationFragment()
+                R.id.bottom_graph -> DataGraphFragment()
+                R.id.bottom_profile -> ProfileFragment()
+                else -> null
             }
+
+            if (fragment != null) {
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.fragmentContainer, fragment)
+                    .commit()
+            }
+
+            true
         }
     }
 }
