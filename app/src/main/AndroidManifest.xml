@@ -12,16 +12,12 @@
         android:theme="@style/Theme.InterstateNow.NoActionBar"
         tools:targetApi="31">
         <activity
-            android:name=".Location"
+            android:name=".RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".DataGraph"
-            android:exported="false" />
-        <activity
-            android:name=".Profile"
+            android:name=".ui.login.LoginActivity"
             android:exported="false"
-            android:label="@string/title_activity_profile"
-            android:theme="@style/Theme.InterstateNow.NoActionBar" />
+            android:label="@string/title_activity_login" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
