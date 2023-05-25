@@ -62,7 +62,8 @@
                 android:paddingLeft="16dp"
                 android:paddingTop="9dp"
                 android:paddingRight="16dp"
-                android:textSize="14dp" />
+                android:textSize="14dp"
+                android:translationY="dp"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -95,7 +96,8 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edt_password"
