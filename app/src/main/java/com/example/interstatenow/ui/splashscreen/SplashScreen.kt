@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 import com.example.interstatenow.MainActivity
 import com.example.interstatenow.R
+import com.example.interstatenow.ui.login.LoginActivity
 
 class SplashScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,5 +20,15 @@ class SplashScreen : AppCompatActivity() {
         }, 2000)
 
         supportActionBar?.hide()
+
+        navigateToNextPage()
+
+
+    }
+    private fun navigateToNextPage() {
+        // Navigasikan ke halaman berikutnya (misalnya, LoginActivity)
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
+        finish() // Menutup SplashScreenActivity agar tidak dapat dikembalikan dengan tombol back
     }
 }

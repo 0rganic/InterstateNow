@@ -1,41 +1,55 @@
 package com.example.interstatenow.ui.login
 
+import android.content.Intent
 import android.os.Bundle
 
 import android.util.Patterns
-import android.widget.Button
-import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.interstatenow.MainActivity
 import com.example.interstatenow.R
+import com.example.interstatenow.databinding.ActivityLoginBinding
 import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.auth.FirebaseAuth
 
 
 class LoginActivity : AppCompatActivity() {
-    private lateinit var edtEmail: EditText
     private lateinit var edtPassword: TextInputEditText
     private lateinit var passwordVisibilityToggle: ImageView
-    private lateinit var btnLogin: Button
+    private lateinit var auth: FirebaseAuth
+    private lateinit var binding: ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        binding = ActivityLoginBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(binding.root)
 
         supportActionBar?.hide()
+        auth = FirebaseAuth.getInstance()
 
-        edtEmail = findViewById(R.id.edt_email)
-        edtPassword = findViewById(R.id.edt_password)
-        passwordVisibilityToggle = findViewById(R.id.password_visibility_toggle)
-        btnLogin = findViewById(R.id.btn_login)
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            navigateToMainActivity()
+            return
+        }
 
-        passwordVisibilityToggle.setOnClickListener {
+        edtPassword = binding.edtPassword
+        passwordVisibilityToggle = binding.passwordVisibilityToggle
+
+        binding.passwordVisibilityToggle.setOnClickListener {
             togglePasswordVisibility()
         }
 
-        btnLogin.setOnClickListener {
-            login()
+        binding.btnLogin.setOnClickListener {
+            loginCheck()
         }
+    }
+
+    private fun navigateToMainActivity() {
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 
     private fun togglePasswordVisibility() {
@@ -51,30 +65,47 @@ class LoginActivity : AppCompatActivity() {
         edtPassword.setSelection(edtPassword.text!!.length)
     }
 
-    private fun login() {
-        val email = edtEmail.text.toString().trim()
-        val password = edtPassword.text.toString().trim()
+    private fun loginCheck() {
+
+        val email = binding.edtEmail.text.toString().trim()
+        val password = binding.edtPassword.text.toString().trim()
 
         if (email.isEmpty()) {
-            showToast("Please enter your email.")
+            binding.edtEmail.error = "Please enter your email."
+            binding.edtEmail.requestFocus()
             return
         }
 
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            showToast("Please enter a valid email address.")
+            binding.edtEmail.error = "Please enter a valid email address."
+            binding.edtEmail.requestFocus()
             return
         }
 
         if (password.isEmpty()) {
-            showToast("Please enter your password.")
+            binding.edtPassword.error = "Please enter your password."
+            binding.edtPassword.requestFocus()
             return
         }
 
-        // Perform login operation here
-        // ...
+        login(email,password)
     }
 
-    private fun showToast(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    private fun login(email: String, password: String) {
+    auth.signInWithEmailAndPassword(email, password)
+        .addOnCompleteListener(this){
+            if (it.isSuccessful){
+                Toast.makeText(this, "login berhasil", Toast.LENGTH_SHORT).show()
+                val currentUser = auth.currentUser
+                currentUser?.let { user ->
+                    auth.updateCurrentUser(user)
+                }
+
+                navigateToMainActivity()
+            } else {
+                Toast.makeText(this, "${it.exception?.message}", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
+
 }

@@ -1,16 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ProfileFragment">
 
-    <TextView
+    <LinearLayout
+        android:id="@+id/header_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15.9dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_bold"
+            android:text="Profile"
+            android:textColor="@color/black"
+            android:textSize="19sp"
+            android:gravity="center"/>
+
+    </LinearLayout>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="42dp"
+        android:src="@drawable/ic_admin"
+        android:layout_gravity="center"
+        android:scaleType="centerCrop"
+        />
+
+    <LinearLayout
+        android:id="@+id/linearlayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/welcome"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_bold"
+            android:text="@string/email" />
+
+            <EditText
+                android:id="@+id/edt_email"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/login_edittext"
+                android:fontFamily="@font/inter_regular"
+                android:text="admin@dishub.com"
+                android:paddingLeft="16dp"
+                android:paddingTop="8dp"
+                android:paddingRight="16dp"
+                android:textSize="14dp"
+                android:enabled="false"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Profile"
-        android:textColor="@color/blue"
-        android:layout_centerInParent="true"
-        android:textSize="36sp" />
+        android:layout_gravity="center"
+        android:layout_marginTop="26dp"
+        android:text="LOGOUT"
+        android:textColor="@color/white"
+        android:background="@drawable/logout"/>
 
-</FrameLayout>
+
+
+
+
+
+
+
+
+
+
+</LinearLayout>

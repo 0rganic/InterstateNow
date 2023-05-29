@@ -24,7 +24,6 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.setOnItemSelectedListener { item ->
             val fragment: Fragment? = when (item.itemId) {
                 R.id.bottom_home -> HomeFragment()
-                R.id.bottom_location -> LocationFragment()
                 R.id.bottom_graph -> DataGraphFragment()
                 R.id.bottom_profile -> ProfileFragment()
                 else -> null

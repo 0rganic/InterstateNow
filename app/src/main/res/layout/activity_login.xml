@@ -63,7 +63,7 @@
                 android:paddingTop="9dp"
                 android:paddingRight="16dp"
                 android:textSize="14dp"
-                android:translationY="dp"/>
+                android:inputType="textEmailAddress"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
