@@ -152,32 +152,6 @@ android:layout_width="match_parent"
 android:text="@string/log_in"
 android:textColor="@color/white" />
 
-<LinearLayout
-android:layout_below="@id/btn_login"
-android:layout_height="wrap_content"
-android:layout_marginBottom="57dp"
-android:layout_marginEnd="81dp"
-android:layout_marginStart="81dp"
-android:layout_marginTop="71dp"
-android:layout_width="match_parent"
-android:orientation="horizontal">
-
-<TextView
-    android:fontFamily="@font/inter_regular"
-    android:layout_height="wrap_content"
-    android:layout_width="wrap_content"
-    android:text="@string/account_question" />
-
-<TextView
-    android:fontFamily="@font/inter_bold"
-    android:id="@+id/sign_up"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="5dp"
-    android:layout_width="wrap_content"
-    android:text="@string/sign_up"
-    android:textColor="@color/blue_dark" />
-
-</LinearLayout>
 
 
     <!--    <ProgressBar-->

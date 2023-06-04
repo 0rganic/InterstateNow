@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "109635695858",
+    "firebase_url": "https://interstate-now-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "interstate-now",
+    "storage_bucket": "interstate-now.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:109635695858:android:4b4706b89d02f2e0680c6b",
+        "android_client_info": {
+          "package_name": "com.example.interstatenow"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "109635695858-oq01tojogrrc9pb4po059rg68lfni7qk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.interstatenow",
+            "certificate_hash": "52badfb758ef0eff6b1687ee765b9beeffc03f90"
+          }
+        },
+        {
+          "client_id": "109635695858-eboaacbekpn130h69jhus806dtkeadnn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDX3de9XyPC1wA_1xdvlatEDHv9K7VHClw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "109635695858-eboaacbekpn130h69jhus806dtkeadnn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

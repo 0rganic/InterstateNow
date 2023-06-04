@@ -14,21 +14,12 @@ class SplashScreen : AppCompatActivity() {
         setContentView(R.layout.activity_splash_screen)
 
         Handler().postDelayed({
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish()
-        }, 2000)
+        }, 3000)
 
         supportActionBar?.hide()
 
-        navigateToNextPage()
-
-
-    }
-    private fun navigateToNextPage() {
-        // Navigasikan ke halaman berikutnya (misalnya, LoginActivity)
-        val intent = Intent(this, LoginActivity::class.java)
-        startActivity(intent)
-        finish() // Menutup SplashScreenActivity agar tidak dapat dikembalikan dengan tombol back
     }
 }

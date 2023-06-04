@@ -1,8 +1,9 @@
 package com.example.interstatenow.ui.login
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
-
+import android.util.Log
 import android.util.Patterns
 import android.widget.ImageView
 import android.widget.Toast
@@ -26,6 +27,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         supportActionBar?.hide()
+
         auth = FirebaseAuth.getInstance()
 
         val currentUser = auth.currentUser
@@ -96,6 +98,7 @@ class LoginActivity : AppCompatActivity() {
         .addOnCompleteListener(this){
             if (it.isSuccessful){
                 Toast.makeText(this, "login berhasil", Toast.LENGTH_SHORT).show()
+                Log.d(TAG, "signInWithToken:success")
                 val currentUser = auth.currentUser
                 currentUser?.let { user ->
                     auth.updateCurrentUser(user)
@@ -103,6 +106,7 @@ class LoginActivity : AppCompatActivity() {
 
                 navigateToMainActivity()
             } else {
+                Log.w(TAG, "signInWithToken:failure", it.exception)
                 Toast.makeText(this, "${it.exception?.message}", Toast.LENGTH_SHORT).show()
             }
         }
