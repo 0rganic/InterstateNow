@@ -42,7 +42,8 @@
         />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_parent_item"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
