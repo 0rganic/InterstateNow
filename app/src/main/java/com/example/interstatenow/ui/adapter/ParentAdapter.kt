@@ -5,11 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.interstatenow.R
 import com.example.interstatenow.ui.RestAreaParent
+import com.example.interstatenow.ui.SpaceItemDecoration
 
-class ParentAdapter (private val listRestAreaParent: List<RestAreaParent>, private val itemClick: (id: String?) -> Unit): RecyclerView.Adapter<ParentAdapter.ViewHolder>()  {
+class ParentAdapter (private val listRestAreaParent: List<RestAreaParent>): RecyclerView.Adapter<ParentAdapter.ViewHolder>()  {
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val tvToll: TextView = view.findViewById(R.id.tv_toll)
         val childRecyclerView: RecyclerView = view.findViewById(R.id.rv_child_item)
@@ -24,15 +26,14 @@ class ParentAdapter (private val listRestAreaParent: List<RestAreaParent>, priva
         holder.tvToll.text = restAreaParent.toll_name
 
         holder.childRecyclerView.setHasFixedSize(true)
+        holder.childRecyclerView.layoutManager = LinearLayoutManager(holder.childRecyclerView.context, LinearLayoutManager.HORIZONTAL, false)
         val adapter = ChildAdapter(restAreaParent.mList)
-        {
-            itemClick(restAreaParent.id)
-        }
+        holder.childRecyclerView.adapter = adapter
 
-
+        val spaceWidthPx = holder.itemView.context.resources.getDimensionPixelSize(R.dimen.activity_horizontal_margin)
+        holder.childRecyclerView.addItemDecoration(SpaceItemDecoration(spaceWidthPx))
 
     }
-
 
     override fun getItemCount() = listRestAreaParent.size
 }

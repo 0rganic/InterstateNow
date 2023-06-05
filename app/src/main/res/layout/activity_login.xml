@@ -25,7 +25,7 @@
         android:layout_marginStart="25dp"
         android:layout_marginTop="25dp"
         android:fontFamily="@font/inter_bold"
-        android:text="@string/welcomemessage"
+        android:text="@string/welcome_message"
         android:textSize="24dp" />
 
     <LinearLayout

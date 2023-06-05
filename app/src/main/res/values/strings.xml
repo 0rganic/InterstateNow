@@ -21,7 +21,7 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="admin">Admin</string>
-    <string name="welcomemessage">Welcome back!</string>
+    <string name="welcome_message">Welcome back!</string>
     <string name="email">E-mail</string>
     <string name="emailHint">Type your e-mail</string>
     <string name="password">Password</string>
@@ -33,4 +33,7 @@
     <string name="create_new_acc">Create New Account</string>
     <string name="show_password">Show Password</string>
     <string name="profile">Profile</string>
+    <string name="data">Data</string>
+    <string name="logout">LOGOUT</string>
+    <string name="email_dishub">admin@dishub.com</string>
 </resources>
