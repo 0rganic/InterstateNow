@@ -1,6 +1,7 @@
 package com.example.interstatenow
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,10 @@ import com.example.interstatenow.databinding.FragmentHomeBinding
 import com.example.interstatenow.ui.RestAreaParent
 import com.example.interstatenow.ui.SpaceItemDecoration
 import com.example.interstatenow.ui.adapter.ParentAdapter
+import com.google.firebase.FirebaseApp
+import com.google.firebase.firestore.FirebaseFirestore
+
+
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
@@ -24,6 +29,8 @@ class HomeFragment : Fragment() {
     ): View? {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         binding.rvParentItem.layoutManager = LinearLayoutManager(requireContext())
+
+        FirebaseApp.initializeApp(requireContext())
 
         val adapter = ParentAdapter(parentList)
         binding.rvParentItem.adapter = adapter
@@ -70,7 +77,26 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
 
+        val db = FirebaseFirestore.getInstance()
 
+        // Mendapatkan koleksi (collection) dari Firestore
+        val collectionRef = db.collection("db")
+
+        // Membaca data dari koleksi
+        collectionRef.get()
+            .addOnSuccessListener { result ->
+                val list1 = ArrayList<RestAreaParent>()
+                val list2 = ArrayList<RestAreaChild>()
+                for (document in result) {
+                    // Mengakses data dari setiap dokumen
+                    val data = document.data
+                    // Lakukan sesuatu dengan data
+                    Log.d("FirestoreData", data.toString())
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.e("FirestoreData", "Error getting documents: $exception")
+            }
     }
 
     override fun onDestroy() {
