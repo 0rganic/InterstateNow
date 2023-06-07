@@ -12,6 +12,7 @@ import com.example.interstatenow.ui.RestAreaParent
 import com.example.interstatenow.ui.SpaceItemDecoration
 
 class ParentAdapter (private val listRestAreaParent: List<RestAreaParent>): RecyclerView.Adapter<ParentAdapter.ViewHolder>()  {
+
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val tvToll: TextView = view.findViewById(R.id.tv_toll)
         val childRecyclerView: RecyclerView = view.findViewById(R.id.rv_child_item)
@@ -23,11 +24,11 @@ class ParentAdapter (private val listRestAreaParent: List<RestAreaParent>): Recy
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         val restAreaParent = listRestAreaParent[position]
-        holder.tvToll.text = restAreaParent.toll_name
+        holder.tvToll.text = restAreaParent.name
 
         holder.childRecyclerView.setHasFixedSize(true)
         holder.childRecyclerView.layoutManager = LinearLayoutManager(holder.childRecyclerView.context, LinearLayoutManager.HORIZONTAL, false)
-        val adapter = ChildAdapter(restAreaParent.mList)
+        val adapter = ChildAdapter(restAreaParent.list_restArea)
         holder.childRecyclerView.adapter = adapter
 
         val spaceWidthPx = holder.itemView.context.resources.getDimensionPixelSize(R.dimen.activity_horizontal_margin)

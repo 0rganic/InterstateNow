@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.interstatenow.R
 import com.example.interstatenow.RestAreaChild
 import com.example.interstatenow.ui.DetailRestArea
@@ -25,14 +26,16 @@ class ChildAdapter(private val listRestAreaChild: List<RestAreaChild>): Recycler
     override fun onBindViewHolder(holder: ChildAdapter.ViewHolder, position: Int) {
     val restAreaChild = listRestAreaChild[position]
 
-    holder.tvKm.text = listRestAreaChild[position].rest_area_name
-        listRestAreaChild[position].images?.let { holder.img.setImageResource(it) }
+        holder.tvKm.text = restAreaChild.name
+
+        Glide.with(holder.itemView)
+            .load(restAreaChild.image)
+            .into(holder.img)
 
         holder.itemView.setOnClickListener {
             val context = holder.itemView.context
             val intent = Intent(context, DetailRestArea::class.java)
-            intent.putExtra("restAreaId", restAreaChild.id)
-            intent.putExtra("toll id", restAreaChild.toll_id)
+            intent.putExtra("restAreaId", restAreaChild.id_restArea)
             context.startActivity(intent)
         }
 

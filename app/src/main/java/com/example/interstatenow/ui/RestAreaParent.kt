@@ -4,6 +4,6 @@ import com.example.interstatenow.RestAreaChild
 
 data class RestAreaParent(
     val id: String? = null,
-    val toll_name: String? = null,
-    val mList: List<RestAreaChild>
+    val name: String? = null,
+    val list_restArea: List<RestAreaChild>
 )

@@ -7,7 +7,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.interstatenow.databinding.FragmentHomeBinding
 import com.example.interstatenow.ui.RestAreaParent
 import com.example.interstatenow.ui.SpaceItemDecoration
@@ -16,24 +15,20 @@ import com.google.firebase.FirebaseApp
 import com.google.firebase.firestore.FirebaseFirestore
 
 
-
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
-    private val parentList = ArrayList<RestAreaParent>()
+    private val parentList = mutableListOf<RestAreaParent>()
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         binding.rvParentItem.layoutManager = LinearLayoutManager(requireContext())
 
         FirebaseApp.initializeApp(requireContext())
-
-        val adapter = ParentAdapter(parentList)
-        binding.rvParentItem.adapter = adapter
 
         val spaceWidthPx = resources.getDimensionPixelSize(R.dimen.activity_vertical_margin)
         binding.rvParentItem.addItemDecoration(SpaceItemDecoration(spaceWidthPx))
@@ -44,66 +39,65 @@ class HomeFragment : Fragment() {
     }
 
     private fun addDataToList() {
-
-        val childItems1 = ArrayList<RestAreaChild>()
-        childItems1.add(RestAreaChild("1", "KM 6", R.drawable.jagorawi, "1"))
-        childItems1.add(RestAreaChild("2", "KM 14", R.drawable.jagorawi, "1"))
-        childItems1.add(RestAreaChild("3", "KM 30", R.drawable.jagorawi, "1"))
-        childItems1.add(RestAreaChild("4", "KM 50", R.drawable.jagorawi, "1"))
-
-        parentList.add(RestAreaParent("1","Rest Area Tol Jakarta - Cikampek", childItems1 ))
-
-        val childItems2 = ArrayList<RestAreaChild>()
-        childItems2.add(RestAreaChild("5", "KM 6", R.drawable.jagorawi, "2"))
-        childItems2.add(RestAreaChild("6", "KM 14", R.drawable.jagorawi, "2"))
-        childItems2.add(RestAreaChild("7", "KM 30", R.drawable.jagorawi, "2"))
-        childItems2.add(RestAreaChild("8", "KM 50", R.drawable.jagorawi, "2"))
-
-        parentList.add(RestAreaParent("2", "Rest Area Tol Batang - Semarang", childItems2))
-
-        val childItems3 = ArrayList<RestAreaChild>()
-        childItems3.add(RestAreaChild("9", "KM 6", R.drawable.jagorawi, "3"))
-        childItems3.add(RestAreaChild("10", "KM 14", R.drawable.jagorawi, "3"))
-        childItems3.add(RestAreaChild("11", "KM 30", R.drawable.jagorawi, "3"))
-        childItems3.add(RestAreaChild("12", "KM 50", R.drawable.jagorawi, "3"))
-
-        parentList.add(RestAreaParent("3", "Rest Area Tol Surabaya - Malang", childItems3))
-
-
-
-
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-            super.onViewCreated(view, savedInstanceState)
-
         val db = FirebaseFirestore.getInstance()
 
         // Mendapatkan koleksi (collection) dari Firestore
-        val collectionRef = db.collection("db")
+        val document = db.collection("test_db").document("4HSAimb8PVrHtrzO9Lt2")
 
         // Membaca data dari koleksi
-        collectionRef.get()
+        document.get()
             .addOnSuccessListener { result ->
-                val list1 = ArrayList<RestAreaParent>()
-                val list2 = ArrayList<RestAreaChild>()
-                for (document in result) {
-                    // Mengakses data dari setiap dokumen
-                    val data = document.data
+                if (result != null) {
+                    val data = result.data
                     // Lakukan sesuatu dengan data
-                    Log.d("FirestoreData", data.toString())
+                    if (data != null) {
+                        val listToll = data["list_toll"] as List<Map<String, Any>>?
+                        if (listToll != null) {
+                            for (toll in listToll) {
+                                val name = toll["name"] as String?
+                                val id = toll["id"] as String?
+                                val restAreaList = mutableListOf<RestAreaChild>()
+
+                                val listRestArea = toll["list_restArea"] as List<Map<String, Any>>?
+                                if (listRestArea != null) {
+                                    for (restArea in listRestArea) {
+                                        val restAreaName = restArea["name"] as String?
+                                        val restAreaId = restArea["id_restArea"] as String?
+                                        val restAreaImage = restArea["image"] as String?
+                                        val restAreaChild = RestAreaChild(restAreaId, restAreaName, restAreaImage)
+                                        restAreaList.add(restAreaChild)
+
+                                        Log.d("child", restAreaChild.toString())
+                                    }
+                                }
+
+                                val parent = RestAreaParent(id, name, restAreaList)
+                                parentList.add(parent)
+                            }
+                        }
+                    }
+                    val adapter = ParentAdapter(parentList)
+                    binding.rvParentItem.adapter = adapter
+                    Log.d("parent", parentList.toString())
+                } else {
+                    Log.d("FirestoreData", "Document not found")
                 }
             }
             .addOnFailureListener { exception ->
-                Log.e("FirestoreData", "Error getting documents: $exception")
+                Log.e("FirestoreData", "Error getting document: $exception")
             }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
     }
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
     }
-
 
 
 }
