@@ -12,10 +12,25 @@ import com.example.interstatenow.R
 import com.example.interstatenow.RestAreaChild
 import com.example.interstatenow.ui.DetailRestArea
 
-class ChildAdapter(private val listRestAreaChild: List<RestAreaChild>): RecyclerView.Adapter<ChildAdapter.ViewHolder>()  {
+class ChildAdapter(private var listRestAreaChild: List<RestAreaChild>): RecyclerView.Adapter<ChildAdapter.ViewHolder>()  {
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val tvKm: TextView = view.findViewById(R.id.tv_km)
         val img: ImageView = view.findViewById(R.id.img_restarea)
+    }
+    fun filter(query: String) {
+        val filteredData = mutableListOf<RestAreaChild>()
+
+        for (item in listRestAreaChild) {
+            if (item.name!!.contains(query, true)) {
+                filteredData.add(item)
+            }
+        }
+
+        // Simpan data hasil filter ke dalam koleksi baru
+        listRestAreaChild = filteredData
+
+        // Panggil notifyDataSetChanged() untuk memperbarui tampilan RecyclerView anak
+        notifyDataSetChanged()
     }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.child_item, parent, false))
@@ -35,7 +50,7 @@ class ChildAdapter(private val listRestAreaChild: List<RestAreaChild>): Recycler
         holder.itemView.setOnClickListener {
             val context = holder.itemView.context
             val intent = Intent(context, DetailRestArea::class.java)
-            intent.putExtra("restAreaId", restAreaChild.id_restArea)
+            intent.putExtra("restAreaImg", restAreaChild.image)
             context.startActivity(intent)
         }
 

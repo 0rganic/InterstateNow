@@ -21,6 +21,7 @@
         android:orientation="horizontal"
         android:layout_marginTop="17dp"
         android:layout_marginStart="39dp"
+        android:layout_marginEnd="39dp"
         >
     <ImageView
         android:id="@+id/btn_back"
@@ -43,17 +44,98 @@
     </LinearLayout>
 
     <ImageView
+        android:id="@+id/img_restarea"
         android:layout_width="321dp"
         android:layout_height="321dp"
-        android:src="@drawable/jagorawi"
         android:background="@drawable/image_background"
         android:layout_marginTop="40dp"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_gravity="center_horizontal"
+        android:scaleType="fitXY"/>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_child_item"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Data"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="39dp"
+        android:fontFamily="@font/inter_bold"
+        android:textSize="20sp"
+        />
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:orientation="horizontal"/>
+        android:layout_marginStart="39dp"
+        android:layout_marginEnd="39dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <View
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:background="@drawable/data_shape"
+            android:backgroundTint="@color/green"
+            />
+        <TextView
+            android:id="@+id/tv_capacity"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="5"
+            android:layout_gravity="center"
+            android:fontFamily="@font/inter_bold"
+            android:textSize="20sp"
+            android:textColor="@color/white"/>
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginStart="5dp">
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <View
+                    android:layout_width="150dp"
+                    android:layout_height="72.5dp"
+                    android:background="@drawable/data_shape"
+                    android:backgroundTint="@color/green"
+                    />
+                <TextView
+                    android:id="@+id/tv_in"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="5"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/inter_bold"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"/>
+            </FrameLayout>
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp">
+                <View
+                    android:layout_width="150dp"
+                    android:layout_height="72.5dp"
+                    android:background="@drawable/data_shape"
+                    android:backgroundTint="@color/pink"
+                    />
+                <TextView
+                    android:id="@+id/tv_out"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="5"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/inter_bold"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"/>
+            </FrameLayout>
+
+
+
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

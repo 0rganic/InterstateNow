@@ -70,5 +70,11 @@
             android:inputType="none"/>
     </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>
+
     </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Comming Soon"
+        android:gravity="center"/>
 </LinearLayout>
