@@ -1,12 +1,14 @@
 package com.example.interstatenow.ui
 
 import android.content.ContentValues.TAG
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.ContactsContract.Data
 import android.util.Log
-import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.activity.result.contract.ActivityResultContracts
 import com.bumptech.glide.Glide
-import com.example.interstatenow.R
+import com.example.interstatenow.MainActivity
 import com.example.interstatenow.databinding.ActivityDetailRestAreaBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -14,8 +16,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
-import java.lang.System.load
-import android.widget.ImageView
+
 
 class DetailRestArea : AppCompatActivity() {
 
@@ -34,7 +35,6 @@ class DetailRestArea : AppCompatActivity() {
 
         val data = intent.getStringExtra(IMG)
 
-        Log.d("foto", data.toString())
 
         Glide.with(this)
             .load(data)
@@ -48,8 +48,12 @@ class DetailRestArea : AppCompatActivity() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 // Get Post object and use the values to update the UI
                 val post = dataSnapshot.getValue<DataRestArea>()
-                Log.d("data", post.toString())
-                // ...
+
+                post?.let { dataRestArea ->
+                    binding.capacityData.text = dataRestArea.capacity.toString()
+                    binding.inData.text = dataRestArea.inValue.toString()
+                    binding.outData.text = dataRestArea.out.toString()
+                }
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
@@ -59,5 +63,9 @@ class DetailRestArea : AppCompatActivity() {
         }
         myRef.addValueEventListener(postListener)
 
+        binding.btnBack.setOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

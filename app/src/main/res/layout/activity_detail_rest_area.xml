@@ -23,11 +23,12 @@
         android:layout_marginStart="39dp"
         android:layout_marginEnd="39dp"
         >
-    <ImageView
+    <ImageButton
         android:id="@+id/btn_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_back"
+        android:backgroundTint="@color/white"
         android:layout_gravity="center"
         />
 
@@ -61,81 +62,149 @@
         android:fontFamily="@font/inter_bold"
         android:textSize="20sp"
         />
-    <LinearLayout
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="39dp"
-        android:layout_marginEnd="39dp"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp">
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="5dp">
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="29dp"
+            android:background="@drawable/data_shape"
+            android:backgroundTint="@color/blue_light"
+            />
+        <TextView
+            android:id="@+id/capacity_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5"
+            android:layout_gravity="center"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/inter_bold"
+            android:textColor="@color/white"
+            />
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
         <View
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="87dp"
+            android:layout_height="29dp"
             android:background="@drawable/data_shape"
-            android:backgroundTint="@color/green"
+            android:backgroundTint="@color/blue"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Capacity"
+            android:textSize="14sp"
+            android:fontFamily="@font/inter_bold"
+            android:textColor="@color/white"
+            android:layout_gravity="center"/>
+        </FrameLayout>
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="13dp">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="29dp"
+            android:background="@drawable/data_shape"
+            android:backgroundTint="@color/blue_light"
             />
         <TextView
-            android:id="@+id/tv_capacity"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:id="@+id/in_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="5"
             android:layout_gravity="center"
+            android:layout_marginStart="20dp"
             android:fontFamily="@font/inter_bold"
-            android:textSize="20sp"
-            android:textColor="@color/white"/>
-        </FrameLayout>
+            android:textColor="@color/white"
+            />
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <View
+                android:layout_width="87dp"
+                android:layout_height="29dp"
+                android:background="@drawable/data_shape"
+                android:backgroundTint="@color/blue"/>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:layout_marginStart="5dp">
-            <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <View
-                    android:layout_width="150dp"
-                    android:layout_height="72.5dp"
-                    android:background="@drawable/data_shape"
-                    android:backgroundTint="@color/green"
-                    />
-                <TextView
-                    android:id="@+id/tv_in"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="5"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/inter_bold"
-                    android:textSize="20sp"
-                    android:textColor="@color/white"/>
-            </FrameLayout>
-            <FrameLayout
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp">
-                <View
-                    android:layout_width="150dp"
-                    android:layout_height="72.5dp"
-                    android:background="@drawable/data_shape"
-                    android:backgroundTint="@color/pink"
-                    />
-                <TextView
-                    android:id="@+id/tv_out"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="5"
-                    android:layout_gravity="center"
-                    android:fontFamily="@font/inter_bold"
-                    android:textSize="20sp"
-                    android:textColor="@color/white"/>
-            </FrameLayout>
+                android:text="IN"
+                android:textSize="14sp"
+                android:fontFamily="@font/inter_bold"
+                android:textColor="@color/white"
+                android:layout_gravity="center"/>
+        </FrameLayout>
+    </FrameLayout>
 
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="13dp">
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="29dp"
+            android:background="@drawable/data_shape"
+            android:backgroundTint="@color/blue_light"
+            />
+        <TextView
+            android:id="@+id/out_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5"
+            android:layout_gravity="center"
+            android:layout_marginStart="20dp"
+            android:fontFamily="@font/inter_bold"
+            android:textColor="@color/white"
+            />
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <View
+                android:layout_width="87dp"
+                android:layout_height="29dp"
+                android:background="@drawable/data_shape"
+                android:backgroundTint="@color/blue"/>
 
-        </LinearLayout>
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="OUT"
+                android:textSize="14sp"
+                android:fontFamily="@font/inter_bold"
+                android:textColor="@color/white"
+                android:layout_gravity="center"/>
+        </FrameLayout>
+    </FrameLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rest Area on This Highway"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="39dp"
+        android:fontFamily="@font/inter_bold"
+        android:textSize="20sp"
+        />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="5dp"/>
 </LinearLayout>

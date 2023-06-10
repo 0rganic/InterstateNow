@@ -38,7 +38,7 @@ class ChildAdapter(private var listRestAreaChild: List<RestAreaChild>): Recycler
 
     override fun getItemCount() = listRestAreaChild.size
 
-    override fun onBindViewHolder(holder: ChildAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
     val restAreaChild = listRestAreaChild[position]
 
         holder.tvKm.text = restAreaChild.name
