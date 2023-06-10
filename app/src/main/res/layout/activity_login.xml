@@ -62,7 +62,7 @@
                 android:paddingLeft="16dp"
                 android:paddingTop="9dp"
                 android:paddingRight="16dp"
-                android:textSize="14dp"
+                android:textSize="14sp"
                 android:inputType="textEmailAddress"/>
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -110,7 +110,7 @@
                 android:paddingLeft="16dp"
                 android:paddingTop="9dp"
                 android:paddingRight="16dp"
-                android:textSize="14dp" />
+                android:textSize="14sp" />
 
                 <ImageView
                     android:id="@+id/password_visibility_toggle"

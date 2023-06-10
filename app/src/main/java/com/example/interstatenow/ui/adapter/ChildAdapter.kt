@@ -17,21 +17,7 @@ class ChildAdapter(private var listRestAreaChild: List<RestAreaChild>): Recycler
         val tvKm: TextView = view.findViewById(R.id.tv_km)
         val img: ImageView = view.findViewById(R.id.img_restarea)
     }
-    fun filter(query: String) {
-        val filteredData = mutableListOf<RestAreaChild>()
 
-        for (item in listRestAreaChild) {
-            if (item.name!!.contains(query, true)) {
-                filteredData.add(item)
-            }
-        }
-
-        // Simpan data hasil filter ke dalam koleksi baru
-        listRestAreaChild = filteredData
-
-        // Panggil notifyDataSetChanged() untuk memperbarui tampilan RecyclerView anak
-        notifyDataSetChanged()
-    }
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.child_item, parent, false))
 

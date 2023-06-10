@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         bottomNavigationView = findViewById(R.id.bottomNavigation)
-        bottomNavigationView.setSelectedItemId(R.id.bottom_home)
+        bottomNavigationView.selectedItemId = R.id.bottom_home
 
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragmentContainer, HomeFragment())

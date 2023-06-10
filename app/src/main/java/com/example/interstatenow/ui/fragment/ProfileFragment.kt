@@ -10,11 +10,7 @@ import com.example.interstatenow.databinding.FragmentProfileBinding
 import com.example.interstatenow.ui.login.LoginActivity
 import com.google.firebase.auth.FirebaseAuth
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ProfileFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+
 class ProfileFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var _binding: FragmentProfileBinding? = null
@@ -24,7 +20,7 @@ class ProfileFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
 
 
@@ -34,7 +30,7 @@ class ProfileFragment : Fragment() {
         return binding.root
     }
 
-    fun logoutButtonClicked() {
+    private fun logoutButtonClicked() {
         FirebaseAuth.getInstance().signOut()
         // Navigasikan pengguna ke halaman login atau tampilan lain yang sesuai
         navigateToLoginPage()

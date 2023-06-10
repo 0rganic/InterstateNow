@@ -30,7 +30,7 @@
         android:src="@drawable/ic_back"
         android:backgroundTint="@color/white"
         android:layout_gravity="center"
-        />
+        android:contentDescription="backButton" />
 
         <TextView
             android:id="@+id/tv_name_rest_area"
