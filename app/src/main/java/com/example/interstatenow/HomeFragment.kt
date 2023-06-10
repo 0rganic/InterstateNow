@@ -6,6 +6,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.interstatenow.databinding.FragmentHomeBinding
 import com.example.interstatenow.ui.RestAreaParent
@@ -13,12 +15,14 @@ import com.example.interstatenow.ui.SpaceItemDecoration
 import com.example.interstatenow.ui.adapter.ParentAdapter
 import com.google.firebase.FirebaseApp
 import com.google.firebase.firestore.FirebaseFirestore
+import java.util.*
 
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private val parentList = mutableListOf<RestAreaParent>()
+    private lateinit var searchView: SearchView
 
 
     override fun onCreateView(
@@ -34,8 +38,42 @@ class HomeFragment : Fragment() {
         binding.rvParentItem.addItemDecoration(SpaceItemDecoration(spaceWidthPx))
         addDataToList()
 
+        searchView = binding.searchView
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                filterList(newText)
+                return true
+            }
+
+        })
+
         return binding.root
 
+    }
+
+    private fun filterList(query: String?) {
+        if (query != null) {
+            val filteredList = mutableListOf<RestAreaParent>()
+
+            for (parent in parentList) {
+                if (parent.name?.lowercase(Locale.ROOT)?.contains(query) == true) {
+                    filteredList.add(parent)
+                }
+            }
+
+            if (filteredList.isEmpty()) {
+                Toast.makeText(requireContext(), "No Data found", Toast.LENGTH_SHORT).show()
+            } else {
+                val adapter = ParentAdapter(filteredList)
+                binding.rvParentItem.adapter = adapter
+                adapter.setFilteredList(filteredList)
+            }
+        }
     }
 
     private fun addDataToList() {

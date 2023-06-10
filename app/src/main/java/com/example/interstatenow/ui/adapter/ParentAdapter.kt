@@ -11,11 +11,16 @@ import com.example.interstatenow.R
 import com.example.interstatenow.ui.RestAreaParent
 import com.example.interstatenow.ui.SpaceItemDecoration
 
-class ParentAdapter (private val listRestAreaParent: List<RestAreaParent>): RecyclerView.Adapter<ParentAdapter.ViewHolder>()  {
+class ParentAdapter (private var listRestAreaParent: List<RestAreaParent>): RecyclerView.Adapter<ParentAdapter.ViewHolder>()  {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val tvToll: TextView = view.findViewById(R.id.tv_toll)
         val childRecyclerView: RecyclerView = view.findViewById(R.id.rv_child_item)
+    }
+
+    fun setFilteredList(mList: List<RestAreaParent>){
+        this.listRestAreaParent = mList
+        notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
