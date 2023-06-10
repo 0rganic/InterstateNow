@@ -14,7 +14,7 @@
         android:theme="@style/Theme.InterstateNow.NoActionBar"
         tools:targetApi="31">
         <activity
-            android:name=".ui.DetailRestArea"
+            android:name=".ui.activity.DetailRestArea"
             android:exported="false" />
         <activity
             android:name=".ui.splashscreen.SplashScreen"
@@ -32,7 +32,7 @@
             android:exported="false"
             android:label="@string/title_activity_login" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.activity.MainActivity"
             android:exported="false"
             android:theme="@style/Theme.InterstateNow.NoActionBar" />
     </application>

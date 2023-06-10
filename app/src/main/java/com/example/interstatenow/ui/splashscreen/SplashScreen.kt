@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import com.example.interstatenow.MainActivity
 import com.example.interstatenow.R
 import com.example.interstatenow.ui.login.LoginActivity
 

@@ -1,4 +1,4 @@
-package com.example.interstatenow.ui
+package com.example.interstatenow.response
 
 import com.google.firebase.database.PropertyName
 

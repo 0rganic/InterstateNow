@@ -1,6 +1,5 @@
 package com.example.interstatenow.ui.adapter
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.interstatenow.R
-import com.example.interstatenow.ui.RestAreaParent
+import com.example.interstatenow.response.RestAreaParent
 import com.example.interstatenow.ui.SpaceItemDecoration
 
 class ParentAdapter (private var listRestAreaParent: List<RestAreaParent>): RecyclerView.Adapter<ParentAdapter.ViewHolder>()  {

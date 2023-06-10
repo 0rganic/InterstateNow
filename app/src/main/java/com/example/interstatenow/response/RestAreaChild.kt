@@ -1,4 +1,4 @@
-package com.example.interstatenow
+package com.example.interstatenow.response
 
 data class RestAreaChild(
     val id_restArea: String? = null,

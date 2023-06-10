@@ -1,4 +1,4 @@
-package com.example.interstatenow
+package com.example.interstatenow.ui.fragment
 
 import android.os.Bundle
 import android.util.Log
@@ -9,8 +9,10 @@ import android.view.ViewGroup
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.interstatenow.R
+import com.example.interstatenow.response.RestAreaChild
 import com.example.interstatenow.databinding.FragmentHomeBinding
-import com.example.interstatenow.ui.RestAreaParent
+import com.example.interstatenow.response.RestAreaParent
 import com.example.interstatenow.ui.SpaceItemDecoration
 import com.example.interstatenow.ui.adapter.ParentAdapter
 import com.google.firebase.FirebaseApp

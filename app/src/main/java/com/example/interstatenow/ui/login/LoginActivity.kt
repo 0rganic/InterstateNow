@@ -8,7 +8,7 @@ import android.util.Patterns
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.example.interstatenow.MainActivity
+import com.example.interstatenow.ui.activity.MainActivity
 import com.example.interstatenow.R
 import com.example.interstatenow.databinding.ActivityLoginBinding
 import com.google.android.material.textfield.TextInputEditText

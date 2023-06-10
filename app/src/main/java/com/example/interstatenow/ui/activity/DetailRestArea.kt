@@ -1,15 +1,15 @@
-package com.example.interstatenow.ui
+package com.example.interstatenow.ui.activity
 
 import android.content.ContentValues.TAG
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.ContactsContract.Data
 import android.util.Log
-import androidx.activity.result.contract.ActivityResultContracts
 import com.bumptech.glide.Glide
-import com.example.interstatenow.MainActivity
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.bumptech.glide.request.RequestOptions
 import com.example.interstatenow.databinding.ActivityDetailRestAreaBinding
+import com.example.interstatenow.response.DataRestArea
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -38,6 +38,7 @@ class DetailRestArea : AppCompatActivity() {
 
         Glide.with(this)
             .load(data)
+            .apply(RequestOptions.bitmapTransform( RoundedCorners(13)))
             .into(binding.imgRestarea)
 
 

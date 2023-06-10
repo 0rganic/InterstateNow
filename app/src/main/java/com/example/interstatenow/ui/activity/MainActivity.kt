@@ -1,7 +1,11 @@
-package com.example.interstatenow
+package com.example.interstatenow.ui.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import com.example.interstatenow.R
+import com.example.interstatenow.ui.fragment.DataGraphFragment
+import com.example.interstatenow.ui.fragment.HomeFragment
+import com.example.interstatenow.ui.fragment.ProfileFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {

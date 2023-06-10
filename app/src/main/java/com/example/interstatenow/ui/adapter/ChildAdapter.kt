@@ -9,8 +9,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.interstatenow.R
-import com.example.interstatenow.RestAreaChild
-import com.example.interstatenow.ui.DetailRestArea
+import com.example.interstatenow.response.RestAreaChild
+import com.example.interstatenow.ui.activity.DetailRestArea
 
 class ChildAdapter(private var listRestAreaChild: List<RestAreaChild>): RecyclerView.Adapter<ChildAdapter.ViewHolder>()  {
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
