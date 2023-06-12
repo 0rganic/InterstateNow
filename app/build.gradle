@@ -2,13 +2,13 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'com.google.gms.google-services'
+    id 'kotlin-parcelize'
 }
 
 
 android {
     namespace 'com.example.interstatenow'
     compileSdk 33
-
 
     defaultConfig {
         applicationId "com.example.interstatenow"
@@ -19,6 +19,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
 
     buildTypes {
         release {
@@ -64,6 +65,9 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.7'
 
     implementation 'com.github.bumptech.glide:glide:4.15.1'
+
+    implementation 'com.google.android.exoplayer:exoplayer:2.15.0'
+
 
 
 

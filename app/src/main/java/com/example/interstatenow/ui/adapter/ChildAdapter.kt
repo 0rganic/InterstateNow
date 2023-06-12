@@ -1,6 +1,7 @@
 package com.example.interstatenow.ui.adapter
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,7 +37,9 @@ class ChildAdapter(private var listRestAreaChild: List<RestAreaChild>): Recycler
         holder.itemView.setOnClickListener {
             val context = holder.itemView.context
             val intent = Intent(context, DetailRestArea::class.java)
+            intent.putExtra("restAreaID", restAreaChild.id_restArea?.substring(0,1))
             intent.putExtra("restAreaImg", restAreaChild.image)
+            intent.putExtra("restAreaName", restAreaChild.name)
             context.startActivity(intent)
         }
 

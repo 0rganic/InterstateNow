@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context=".ui.activity.DetailRestArea">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     android:layout_gravity="center_horizontal"
-    tools:context=".ui.activity.DetailRestArea">
+   >
 
     <ImageView
         android:id="@+id/waves"
@@ -195,7 +199,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Rest Area on This Highway"
+        android:text="Rest Area's on This Highway"
         android:layout_marginTop="20dp"
         android:layout_marginStart="39dp"
         android:fontFamily="@font/inter_bold"
@@ -203,8 +207,12 @@
         />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_rest_area_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="5dp"/>
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"/>
 </LinearLayout>
+</ScrollView>
