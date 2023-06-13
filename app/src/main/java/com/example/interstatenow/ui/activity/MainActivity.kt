@@ -12,6 +12,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 class MainActivity : AppCompatActivity() {
 
     private lateinit var bottomNavigationView: BottomNavigationView
+    private var selectedItemId: Int = R.id.bottom_home
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,11 +23,12 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView = findViewById(R.id.bottomNavigation)
         bottomNavigationView.selectedItemId = R.id.bottom_home
 
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.fragmentContainer, HomeFragment())
-            .commit()
+        selectedItemId = savedInstanceState?.getInt("selectedItemId", R.id.bottom_home) ?: R.id.bottom_home
+        bottomNavigationView.selectedItemId = selectedItemId
 
         bottomNavigationView.setOnItemSelectedListener { item ->
+            selectedItemId = item.itemId
+
             val fragment: Fragment? = when (item.itemId) {
                 R.id.bottom_home -> HomeFragment()
                 R.id.bottom_graph -> DataGraphFragment()
@@ -42,5 +44,9 @@ class MainActivity : AppCompatActivity() {
 
             true
         }
+    }
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt("selectedItemId", selectedItemId)
     }
 }

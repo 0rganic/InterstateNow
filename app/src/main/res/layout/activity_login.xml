@@ -52,7 +52,7 @@
             android:layout_marginTop="4dp"
             app:boxBackgroundMode="none">
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edt_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -129,7 +129,7 @@
 
 <TextView
 android:fontFamily="@font/inter_bold"
-android:gravity="right"
+android:gravity="end"
 android:id="@+id/forgotPassword"
 android:layout_below="@+id/linearlayout2"
 android:layout_height="wrap_content"

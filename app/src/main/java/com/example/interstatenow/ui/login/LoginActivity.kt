@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.interstatenow.ui.activity.MainActivity
 import com.example.interstatenow.R
 import com.example.interstatenow.databinding.ActivityLoginBinding
+import com.example.interstatenow.ui.activity.ResetPassword
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 
@@ -38,6 +39,11 @@ class LoginActivity : AppCompatActivity() {
 
         edtPassword = binding.edtPassword
         passwordVisibilityToggle = binding.passwordVisibilityToggle
+
+        binding.forgotPassword.setOnClickListener {
+            val intent = Intent(this, ResetPassword::class.java)
+            startActivity(intent)
+        }
 
         binding.passwordVisibilityToggle.setOnClickListener {
             togglePasswordVisibility()
